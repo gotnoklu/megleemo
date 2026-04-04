@@ -35,7 +35,7 @@ jobs:
         run: bunx nx lint frontend
 
       - name: Format Codebase
-        run: bunx nx format frontend
+        run: bunx nx format:write frontend
 
   lint-format-backend:
     name: Lint & Format Backend Codebase
@@ -64,4 +64,4 @@ jobs:
         run: bunx nx lint backend
 
       - name: Format Codebase
-        run: bunx nx format backend
+        run: bunx nx format:write backend

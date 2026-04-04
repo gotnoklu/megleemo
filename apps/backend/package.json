@@ -1,17 +1,17 @@
 {
-  "name": "@megleemo/backend",
-  "version": "0.0.1",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "format": "biome format",
-    "lint": "biome lint",
-    "typecheck": "tsc --noEmit",
-    "build": "rslib build && tsc --declaration --emitDeclarationOnly",
-    "dev": "rslib -w"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@biomejs/biome": "^2.4.10"
-  }
+	"name": "@megleemo/backend",
+	"version": "0.0.1",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"format:write": "biome format --write",
+		"lint": "biome lint",
+		"typecheck": "tsc --noEmit",
+		"build": "rslib build && tsc --declaration --emitDeclarationOnly",
+		"dev": "rslib -w"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.10"
+	}
 }
