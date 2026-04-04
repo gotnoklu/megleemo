@@ -11,7 +11,7 @@ jobs:
   lint-format-frontend:
     name: Lint & Format Frontend Codebase
     timeout-minutes: 15
-    runs-on: blacksmith-2vcpu-ubuntu-2404
+    runs-on: ubuntu-24.04
 
     defaults:
       run:
@@ -40,7 +40,7 @@ jobs:
   lint-format-backend:
     name: Lint & Format Backend Codebase
     timeout-minutes: 15
-    runs-on: blacksmith-2vcpu-ubuntu-2404
+    runs-on: ubuntu-24.04
 
     defaults:
       run:
