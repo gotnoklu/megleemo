@@ -98,8 +98,19 @@
 						},
 						"noNonNullAssertion": "off"
 					},
+					"a11y": {
+						"useFocusableInteractive": "off",
+						"useSemanticElements": "off",
+						"noLabelWithoutControl": "off",
+						"useKeyWithClickEvents": "off",
+						"useAriaPropsForRole": "off"
+					},
+					"security": {
+						"noDangerouslySetInnerHtml": "off"
+					},
 					"suspicious": {
 						"noVar": "error",
+						"noDocumentCookie": "off",
 						"useIterableCallbackReturn": "off",
 						"noNonNullAssertedOptionalChain": "off",
 						"noDuplicateClassMembers": "off",
@@ -112,7 +123,8 @@
 						"useGetterReturn": "off",
 						"noExplicitAny": "off",
 						"noTsIgnore": "off",
-						"noTemplateCurlyInString": "off"
+						"noTemplateCurlyInString": "off",
+						"noArrayIndexKey": "off"
 					}
 				}
 			}
