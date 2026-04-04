@@ -1,0 +1,67 @@
+name: Lint & Format Codebase
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_call:
+
+jobs:
+  lint-format-frontend:
+    name: Lint & Format Frontend Codebase
+    timeout-minutes: 15
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+
+    defaults:
+      run:
+        working-directory: apps/frontend
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Bun Environment
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Lint Codebase
+        run: bunx nx lint frontend
+
+      - name: Format Codebase
+        run: bunx nx format frontend
+
+  lint-format-backend:
+    name: Lint & Format Backend Codebase
+    timeout-minutes: 15
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+
+    defaults:
+      run:
+        working-directory: apps/backend
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Bun Environment
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Lint Codebase
+        run: bunx nx lint backend
+
+      - name: Format Codebase
+        run: bunx nx format backend
