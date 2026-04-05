@@ -1,4 +1,4 @@
-import { Context, Env, Hono, Input, Next } from 'hono'
+import { Hono, } from 'hono'
 import { handleCreateOneUser } from '../controllers/users'
 import { CreateOneUser } from '../dtos/users'
 import { validateRequest } from '../middlewares/validators'
