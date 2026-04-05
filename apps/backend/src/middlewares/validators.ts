@@ -1,7 +1,7 @@
-import type { Context, Next } from "hono"
-import { type AnySchema, type BaseIssue, type BaseSchema, type InferInput, type InferOutput, safeParseAsync } from "valibot"
-import { sendResponse } from "../utilities/api"
-import { isObject, safe } from "../utilities/global"
+import type { Context, Next } from 'hono'
+import { type AnySchema, type BaseIssue, type BaseSchema, type InferInput, type InferOutput, safeParseAsync } from 'valibot'
+import { sendResponse } from '../utilities/api'
+import { isObject, safe } from '../utilities/global'
 
 /**
  * Validates a request payload.
@@ -13,15 +13,15 @@ import { isObject, safe } from "../utilities/global"
 export function validateRequest(
   validator: BaseSchema<InferInput<AnySchema>, InferOutput<AnySchema>, BaseIssue<unknown>>,
   options: {
-    field: Extract<keyof Context["req"], "header" | "param" | "query"> | "multipart" | "www-urlencoded" | "json" | "text"
+    field: Extract<keyof Context['req'], 'header' | 'param' | 'query'> | 'multipart' | 'www-urlencoded' | 'json' | 'text'
   }
 ) {
   return async (c: Context, next: Next) => {
     let payload: any
 
-    if (options.field === "multipart" || options.field === "www-urlencoded") {
+    if (options.field === 'multipart' || options.field === 'www-urlencoded') {
       payload = await c.req.parseBody()
-    } else if (options.field === "json") {
+    } else if (options.field === 'json') {
       /**
        * If parsing the body into JSON fails, I don't want it to throw an error, so I safely run it to return a
        * `Result<Ok, Err>` type. If the result is an error (ie: the JSON parsing fails), I set the payload value
@@ -36,25 +36,25 @@ export function validateRequest(
       } else {
         payload = () => {}
       }
-    } else if (options.field === "text") {
+    } else if (options.field === 'text') {
       payload = await c.req.text()
-    } else if (options.field === "header") {
+    } else if (options.field === 'header') {
       payload = c.req.header()
-    } else if (options.field === "param") {
+    } else if (options.field === 'param') {
       payload = c.req.param()
-    } else if (options.field === "query") {
+    } else if (options.field === 'query') {
       payload = c.req.query()
     }
 
     const validation = await safeParseAsync(validator, payload)
 
     if (validation.success) {
-      const passedRequestValues = c.get("payload")
+      const passedRequestValues = c.get('payload')
 
       if (passedRequestValues === undefined || isObject(passedRequestValues)) {
-        c.set("payload", Object.assign({}, passedRequestValues, validation.output))
+        c.set('payload', Object.assign({}, passedRequestValues, validation.output))
       } else {
-        c.set("payload", validation.output)
+        c.set('payload', validation.output)
       }
 
       return next()
@@ -62,10 +62,10 @@ export function validateRequest(
 
     return sendResponse(c, {
       status: 400,
-      message: "The request is invalid. Please check the `data` field for details.",
+      message: 'The request is invalid. Please check the `data` field for details.',
       data: validation.issues.map((issue) => ({
         ...issue,
-        path: issue.path?.map((path) => path.key).join("."),
+        path: issue.path?.map((path) => path.key).join('.'),
       })),
     })
   }

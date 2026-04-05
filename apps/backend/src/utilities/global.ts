@@ -1,11 +1,11 @@
-import { Err, Ok, type Result } from "../libraries/result"
+import { Err, Ok, type Result } from '../libraries/result'
 
 export function isObject<Value>(value: Value): value is Exclude<Extract<Value, Record<PropertyKey, any>>, unknown[]> {
-  return Object.prototype.toString.call(value) === "[object Object]"
+  return Object.prototype.toString.call(value) === '[object Object]'
 }
 
 export const isPromise = <T>(value: unknown): value is Promise<T> => {
-  return value instanceof Promise || (!!value && typeof (value as any).then === "function")
+  return value instanceof Promise || (!!value && typeof (value as any).then === 'function')
 }
 
 /**
@@ -40,7 +40,7 @@ export function safe<Ok, Err = unknown>(fn: () => Ok): Result<Ok, Err>
  */
 export function safe<Ok, Err = unknown>(promise: Promise<Ok>): Promise<Result<Ok, Err>>
 export function safe<Ok, Err = unknown>(input: Promise<Ok> | (() => Ok) | (() => Promise<Ok>)): Result<Ok, Err> | Promise<Result<Ok, Err>> {
-  if (typeof input === "function") {
+  if (typeof input === 'function') {
     try {
       const result = input()
       if (isPromise<Ok>(result)) {
