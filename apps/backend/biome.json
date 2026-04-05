@@ -7,16 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": [
-			"**",
-			"!!**/out",
-			"!!**/build",
-			"!!**/dist",
-			"!!**/.github",
-			"!!**/.vscode",
-			"!!**/node_modules/",
-			"!!**/tests/**/*.js"
-		]
+		"includes": ["**", "!!**/build", "!!**/node_modules/", "!!**/tests/**/*.js"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -25,16 +16,9 @@
 		"indentStyle": "space",
 		"indentWidth": 2,
 		"lineEnding": "lf",
-		"lineWidth": 120,
+		"lineWidth": 150,
 		"attributePosition": "auto",
-		"bracketSpacing": true,
-		"includes": [
-			"**",
-			"!!**/out",
-			"!!**/.github",
-			"!!**/.vscode",
-			"!!**/node_modules/"
-		]
+		"bracketSpacing": true
 	},
 	"assist": {
 		"actions": {
@@ -45,18 +29,6 @@
 	},
 	"linter": {
 		"enabled": true,
-		"includes": [
-			"**",
-			"!!**/out",
-			"!!**/build",
-			"!!**/dist",
-			"!!**/.next",
-			"!!**/.github",
-			"!!**/.vscode",
-			"!!**/.yarn",
-			"!!**/.turbo",
-			"!!**/node_modules/"
-		],
 		"rules": {
 			"recommended": true,
 			"a11y": {
@@ -108,6 +80,18 @@
 				"noTsIgnore": "off",
 				"noAssignInExpressions": "off"
 			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "es5",
+			"semicolons": "asNeeded",
+			"arrowParentheses": "always",
+			"bracketSameLine": false,
+			"attributePosition": "auto",
+			"bracketSpacing": true
 		}
 	},
 	"overrides": [
@@ -177,18 +161,5 @@
 				}
 			}
 		}
-	],
-	"javascript": {
-		"formatter": {
-			"jsxQuoteStyle": "double",
-			"quoteProperties": "asNeeded",
-			"trailingCommas": "es5",
-			"semicolons": "asNeeded",
-			"arrowParentheses": "always",
-			"bracketSameLine": false,
-			"quoteStyle": "single",
-			"attributePosition": "auto",
-			"bracketSpacing": true
-		}
-	}
+	]
 }
