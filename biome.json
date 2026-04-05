@@ -9,6 +9,17 @@
     "ignoreUnknown": false,
     "includes": ["**", "!!**/build", "!!**/node_modules/", "!!**/tests/**/*.js"]
   },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "indentScriptAndStyle": true
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "formatter": {
     "enabled": true,
     "useEditorconfig": true,
@@ -97,7 +108,7 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.ts", "**/*.mts", "**/*.cts"],
+      "includes": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
       "linter": {
         "enabled": true,
         "rules": {
@@ -143,8 +154,19 @@
             },
             "noNonNullAssertion": "off"
           },
+          "security": {
+            "noDangerouslySetInnerHtml": "off"
+          },
+          "a11y": {
+            "useSemanticElements": "off",
+            "useKeyWithClickEvents": "off",
+            "useFocusableInteractive": "off",
+            "useAriaPropsForRole": "off",
+            "noLabelWithoutControl": "off"
+          },
           "suspicious": {
             "noVar": "error",
+            "noArrayIndexKey": "off",
             "useIterableCallbackReturn": "off",
             "noNonNullAssertedOptionalChain": "off",
             "noDuplicateClassMembers": "off",
@@ -157,7 +179,8 @@
             "useGetterReturn": "off",
             "noExplicitAny": "off",
             "noTsIgnore": "off",
-            "noTemplateCurlyInString": "off"
+            "noTemplateCurlyInString": "off",
+            "noDocumentCookie": "off"
           }
         }
       }
